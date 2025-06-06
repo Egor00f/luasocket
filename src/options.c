@@ -245,45 +245,53 @@ int opt_set_tcp_defer_accept(lua_State *L, p_socket ps)
 /*------------------------------------------------------*/
 int opt_set_ip6_unicast_hops(lua_State *L, p_socket ps)
 {
-  return opt_setint(L, ps, IPPROTO_IPV6, IPV6_UNICAST_HOPS);
+  //return opt_setint(L, ps, IPPROTO_IPV6, IPV6_UNICAST_HOPS);
+  return 2;
 }
 
 int opt_get_ip6_unicast_hops(lua_State *L, p_socket ps)
 {
-  return opt_getint(L, ps, IPPROTO_IPV6, IPV6_UNICAST_HOPS);
+  //return opt_getint(L, ps, IPPROTO_IPV6, IPV6_UNICAST_HOPS);
+  return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_set_ip6_multicast_hops(lua_State *L, p_socket ps)
 {
-  return opt_setint(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_HOPS);
+  //return opt_setint(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_HOPS);
+  return 2;
 }
 
 int opt_get_ip6_multicast_hops(lua_State *L, p_socket ps)
 {
-  return opt_getint(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_HOPS);
+  //return opt_getint(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_HOPS);
+  return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_set_ip_multicast_loop(lua_State *L, p_socket ps)
 {
-    return opt_setboolean(L, ps, IPPROTO_IP, IP_MULTICAST_LOOP);
+    //return opt_setboolean(L, ps, IPPROTO_IP, IP_MULTICAST_LOOP);
+    return 2;
 }
 
 int opt_get_ip_multicast_loop(lua_State *L, p_socket ps)
 {
-    return opt_getboolean(L, ps, IPPROTO_IP, IP_MULTICAST_LOOP);
+    //return opt_getboolean(L, ps, IPPROTO_IP, IP_MULTICAST_LOOP);
+    return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_set_ip6_multicast_loop(lua_State *L, p_socket ps)
 {
-    return opt_setboolean(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_LOOP);
+    //return opt_setboolean(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_LOOP);
+    return 2;
 }
 
 int opt_get_ip6_multicast_loop(lua_State *L, p_socket ps)
 {
-    return opt_getboolean(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_LOOP);
+    //return opt_getboolean(L, ps, IPPROTO_IPV6, IPV6_MULTICAST_LOOP);
+    return 2;
 }
 
 /*------------------------------------------------------*/
@@ -322,7 +330,8 @@ int opt_get_linger(lua_State *L, p_socket ps)
 /*------------------------------------------------------*/
 int opt_set_ip_multicast_ttl(lua_State *L, p_socket ps)
 {
-    return opt_setint(L, ps, IPPROTO_IP, IP_MULTICAST_TTL);
+    //return opt_setint(L, ps, IPPROTO_IP, IP_MULTICAST_TTL);
+    return 2;
 }
 
 /*------------------------------------------------------*/
@@ -333,13 +342,14 @@ int opt_set_ip_multicast_if(lua_State *L, p_socket ps)
     val.s_addr = htonl(INADDR_ANY);
     if (strcmp(address, "*") && !inet_aton(address, &val))
         luaL_argerror(L, 3, "ip expected");
-    return opt_set(L, ps, IPPROTO_IP, IP_MULTICAST_IF,
-        (char *) &val, sizeof(val));
+    //return opt_set(L, ps, IPPROTO_IP, IP_MULTICAST_IF,
+    //    (char *) &val, sizeof(val));
+    return 2;
 }
 
 int opt_get_ip_multicast_if(lua_State *L, p_socket ps)
 {
-    struct in_addr val;
+    /*struct in_addr val;
     socklen_t len = sizeof(val);
     if (getsockopt(*ps, IPPROTO_IP, IP_MULTICAST_IF, (char *) &val, &len) < 0) {
         lua_pushnil(L);
@@ -347,40 +357,47 @@ int opt_get_ip_multicast_if(lua_State *L, p_socket ps)
         return 2;
     }
     lua_pushstring(L, inet_ntoa(val));
-    return 1;
+    return 1;*/
+    return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_set_ip_add_membership(lua_State *L, p_socket ps)
 {
-    return opt_setmembership(L, ps, IPPROTO_IP, IP_ADD_MEMBERSHIP);
+    //return opt_setmembership(L, ps, IPPROTO_IP, IP_ADD_MEMBERSHIP);
+    return 2;
 }
 
 int opt_set_ip_drop_membersip(lua_State *L, p_socket ps)
 {
-    return opt_setmembership(L, ps, IPPROTO_IP, IP_DROP_MEMBERSHIP);
+    //return opt_setmembership(L, ps, IPPROTO_IP, IP_DROP_MEMBERSHIP);
+    return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_set_ip6_add_membership(lua_State *L, p_socket ps)
 {
-    return opt_ip6_setmembership(L, ps, IPPROTO_IPV6, IPV6_ADD_MEMBERSHIP);
+    //return opt_ip6_setmembership(L, ps, IPPROTO_IPV6, IPV6_ADD_MEMBERSHIP);
+    return 2;
 }
 
 int opt_set_ip6_drop_membersip(lua_State *L, p_socket ps)
 {
-    return opt_ip6_setmembership(L, ps, IPPROTO_IPV6, IPV6_DROP_MEMBERSHIP);
+    //return opt_ip6_setmembership(L, ps, IPPROTO_IPV6, IPV6_DROP_MEMBERSHIP);
+    return 2;
 }
 
 /*------------------------------------------------------*/
 int opt_get_ip6_v6only(lua_State *L, p_socket ps)
 {
-    return opt_getboolean(L, ps, IPPROTO_IPV6, IPV6_V6ONLY);
+    //return opt_getboolean(L, ps, IPPROTO_IPV6, IPV6_V6ONLY);
+    return 2;
 }
 
 int opt_set_ip6_v6only(lua_State *L, p_socket ps)
 {
-    return opt_setboolean(L, ps, IPPROTO_IPV6, IPV6_V6ONLY);
+    //return opt_setboolean(L, ps, IPPROTO_IPV6, IPV6_V6ONLY);
+    return 2;
 }
 
 /*------------------------------------------------------*/

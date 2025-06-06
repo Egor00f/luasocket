@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "/home/autobuild/tools/win32/include/lua5.1",
+                "${workspaceFolder}/../newlib/contrib/sdk/sources/newlib/libc/include"
+            ],
+            "defines": [
+                "LUASOCKET_NODEBUG"
+            ],
+            "compilerPath": "/home/autobuild/tools/win32/bin/kos32-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "linux-gcc-x86",
+            "compilerArgs": [
+                "-U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32"
+            ]
+        }
+    ],
+    "version": 4
+}

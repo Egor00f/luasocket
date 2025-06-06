@@ -153,7 +153,7 @@ print:
 #------
 # Supported platforms
 #
-PLATS= macosx linux win32 win64 mingw solaris
+PLATS= macosx linux win32 win64 mingw solaris kolibrios
 
 #------
 # Compiler and linker settings
@@ -266,6 +266,20 @@ SOCKET_win64=wsocket.obj
 
 .c.obj:
 	$(CC) $(CFLAGS) //Fo"$@" //c $<
+
+#------
+# Compiler and linker settings
+# for kolibrios
+
+SO_kolibrios=dll
+O_kolibrios=o
+CC_kolibrios=kos32-gcc
+DEF_kolibrios=-DLUASOCKET_$(DEBUG)
+CFLAGS_kolibrios=-fno-ident -fomit-frame-pointer \
+	-U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 \
+	-I$(abspath ../../newlib/contrib/sdk/sources/newlib/libc/include) -I/home/autobuild/tools/win32/include/lua$(LUAV)
+LDFLAGS_kolibrios= -lgcc -lc.dll -ldll
+LD_kolibrios=kos32-ld
 
 #------
 # Output file names
@@ -386,6 +400,9 @@ mingw:
 
 solaris:
 	$(MAKE) all-unix PLAT=solaris
+
+kolibrios:
+	$(MAKE) all PLAT=kolibrios
 
 none:
 	@echo "Please run"

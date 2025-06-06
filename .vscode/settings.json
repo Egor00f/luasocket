@@ -1,0 +1,9 @@
+{
+    "makefile.configureOnOpen": false,
+    "files.associations": {
+        "luasocket.h": "c",
+        "inet.h": "c",
+        "socket.h": "c",
+        "usocket.h": "c"
+    }
+}
